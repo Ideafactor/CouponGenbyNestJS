@@ -1,3 +1,77 @@
+# 쿠폰 관리 시스템
+
+NestJS를 사용한 쿠폰 관리 시스템입니다.
+
+## 주요 기능
+
+### 1. 사전준비
+- 회원 테이블 생성
+- 4명의 유저 생성 (1명 admin, 3명 일반 사용자)
+
+### 2. 로그인 페이지
+- admin: 쿠폰 발행 페이지로 이동
+- 일반 사용자: 쿠폰 사용 페이지로 이동
+
+### 3. 쿠폰 발행 페이지 (admin 전용)
+- 쿠폰 코드 형식: 16자리 (****-****-****-****)
+- prefix 3자리 입력 받아서 쿠폰 코드 앞 3자리 고정
+- 한 번에 10만 건 생성
+- 생성된 쿠폰은 같은 그룹 (A, B, C, ...)
+
+### 4. 쿠폰 코드 리스트 페이지 (admin 전용)
+- 100개씩 페이징 처리
+- 그룹별 검색 가능
+- 코드, 사용일시, 사용유저 정보 표시
+
+### 5. 쿠폰 코드 사용 페이지
+- 코드 입력 시 사용 가능 여부 체크
+
+## 기술 스택
+- NestJS
+- MongoDB
+- JWT Authentication
+- TypeScript
+
+## 설치 및 실행
+
+```bash
+# 의존성 설치
+$ npm install
+
+# 개발 서버 실행
+$ npm run start:dev
+
+# 프로덕션 빌드
+$ npm run build
+
+# 프로덕션 실행
+$ npm run start:prod
+```
+
+## API 엔드포인트
+
+### 인증
+- POST /auth/login - 로그인
+
+### 쿠폰 관리 (admin)
+- POST /coupons/generate - 쿠폰 생성
+- GET /coupons - 쿠폰 목록 조회
+
+### 쿠폰 사용
+- POST /coupons/check - 쿠폰 유효성 검사
+- POST /coupons/use - 쿠폰 사용
+
+## 초기 계정 정보
+
+### Admin 계정
+- username: admin
+- password: admin123
+
+### 일반 사용자 계정
+- username: user1, password: user123
+- username: user2, password: user123
+- username: user3, password: user123
+
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
 </p>
